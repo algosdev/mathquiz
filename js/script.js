@@ -14,12 +14,27 @@ const equal = document.getElementById("equal");
 const progress = document.getElementById("progress");
 const op = ["+", "-", "×"];
 let progressPer = 100,
+  rand,
+  randDif,
+  randOper,
+  answer,
+  randNum1,
+  randNum2,
   score = 0,
   count = 60,
-  rand,
   clickCount = 0;
 let progBar = setInterval(progr, 300);
 let timeBar = setInterval(timer, 1000);
+right.addEventListener("click", () => {
+  console.log("Right1", rand);
+  checkAnswer(1);
+  ifClickRandomly();
+});
+wrong.addEventListener("click", () => {
+  console.log("Left0", rand);
+  checkAnswer(0);
+  ifClickRandomly();
+});
 newgame();
 function ifClickRandomly() {
   clickCount++;
@@ -28,13 +43,16 @@ function ifClickRandomly() {
     endScreen("You have clicked randomly", "#ff4444");
   }
 }
+function randAnsNum() {
+  return Math.floor(Math.random() * 2);
+}
 function newgame() {
-  let answer;
-  let randNum1 = Math.floor(Math.random() * 100) + 1;
-  let randNum2 = Math.floor(Math.random() * 100) + 1;
-  let randOper = Math.floor(Math.random() * 3);
-  let ranDif = Math.floor(Math.random() * 10) + 1;
-  rand = Math.floor(Math.random() * 2);
+  answer;
+  randNum1 = Math.floor(Math.random() * 100) + 1;
+  randNum2 = Math.floor(Math.random() * 100) + 1;
+  randOper = Math.floor(Math.random() * 3);
+  ranDif = Math.floor(Math.random() * 10) - 10;
+  rand = randAnsNum();
   operator.innerHTML = op[randOper];
   if (randOper == 0) {
     answer = randNum1 + randNum2;
@@ -51,9 +69,6 @@ function newgame() {
 
 function checkAnswer(n) {
   if (rand == n) {
-    result.innerHTML = "Wrong, Try again";
-    result.style.color = "#ff4444";
-  } else {
     result.innerHTML = "Correct, below the new quiz";
     result.style.color = "#00C851";
     score++;
@@ -61,6 +76,9 @@ function checkAnswer(n) {
     if (score == 20) {
       endScreen("You Win!", "#00C851");
     }
+  } else {
+    result.innerHTML = "Wrong, Try again";
+    result.style.color = "#ff4444";
   }
   newgame();
 }
@@ -83,14 +101,6 @@ function progr() {
     clearInterval(progBar);
   }
 }
-right.addEventListener("click", () => {
-  checkAnswer(1);
-  ifClickRandomly();
-});
-wrong.addEventListener("click", () => {
-  checkAnswer(0);
-  ifClickRandomly();
-});
 function timer() {
   count--;
   time.innerHTML = count;
