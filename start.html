@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="bg-dark">
+    <div class="container text-white p-3">
+      <div class="text-right p-2">
+        <span class="mx-2">Your score: <span id="score"> 0 </span> </span>
+        <div class="progress">
+          <div class="progress-bar bg-info" id="progress"></div>
+        </div>
+        <h5 class="mx-2">Time : <span id="time">60</span></h5>
+      </div>
+
+      <div class="text-center">
+        <div class="area">
+          <span id="question">
+            <h4 class="pt-4" id="result">True or False?</h4>
+            <h1>
+              <span id="num1">99</span> <span id="oper">+</span>
+              <span id="num2">99</span> = <span id="equal">9999</span>
+            </h1>
+          </span>
+          <h1 id="status">You Win</h1>
+          <h3 id="scoreBox"></h3>
+        </div>
+
+        <div
+          class="d-flex mx-auto justify-content-around align-items-center mt-5 pt-5"
+        >
+          <div class="d-flex justify-content-around align-items-center">
+            <a id="right" class="btn" onclick="checkAnswer(0)">
+              <i class="fas fa-check-circle fa-7x"></i>
+            </a>
+          </div>
+          <div class="d-flex justify-content-around align-items-center">
+            <a id="wrong" class="btn">
+              <i class="fas fa-times-circle fa-7x"></i>
+            </a>
+          </div>
+        </div>
+        <a href="start.html" class="btn btn-info mt-4" id="again">
+          Play Again</a
+        >
+      </div>
+    </div>
+
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+.container {
+  max-width: 620px;
+  width: 100%;
+}
+.question-f {
+  font-size: 32px;
+}
+#status {
+  display: none;
+  font-size: 64px;
+}
+#again {
+  display: none;
+}
+#progress {
+  width: 100%;
+}
+#right i {
+  color: #00c851;
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+#right i::after {
+  position: absolute;
+  content: "";
+  background: #fff;
+  z-index: -1;
+  top: 20px;
+  left: 20px;
+  width: 75px;
+  height: 75px;
+}
+#right i::after {
+  z-index: -2;
+}
+#wrong i {
+  color: #ff4444;
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+#wrong i::after {
+  position: absolute;
+  content: "";
+  background: #fff;
+  z-index: -1;
+  top: 20px;
+  left: 20px;
+  width: 75px;
+  height: 75px;
+}
+#wrong i::after {
+  z-index: -2;
+}
