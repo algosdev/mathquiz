@@ -18,6 +18,7 @@ let progressPer = 100,
   randDif,
   randOper,
   answer,
+  randAnswer,
   randNum1,
   randNum2,
   score = 0,
@@ -26,14 +27,36 @@ let progressPer = 100,
 let progBar = setInterval(progr, 300);
 let timeBar = setInterval(timer, 1000);
 right.addEventListener("click", () => {
-  console.log("Right1", rand);
-  checkAnswer(1);
+  if (rand == 1) {
+    result.innerHTML = "Correct, below the new quiz";
+    result.style.color = "#00C851";
+    score++;
+    scoreEl.innerHTML = score;
+    if (score == 20) {
+      endScreen("You Win!", "#00C851");
+    }
+  } else if (rand == 0) {
+    result.innerHTML = "Wrong, Try again";
+    result.style.color = "#ff4444";
+  }
   ifClickRandomly();
+  newgame();
 });
 wrong.addEventListener("click", () => {
-  console.log("Left0", rand);
-  checkAnswer(0);
+  if (rand == 0) {
+    result.innerHTML = "Correct, below the new quiz";
+    result.style.color = "#00C851";
+    score++;
+    scoreEl.innerHTML = score;
+    if (score == 20) {
+      endScreen("You Win!", "#00C851");
+    }
+  } else if (rand == 1) {
+    result.innerHTML = "Wrong, Try again";
+    result.style.color = "#ff4444";
+  }
   ifClickRandomly();
+  newgame();
 });
 newgame();
 function ifClickRandomly() {
@@ -47,11 +70,14 @@ function randAnsNum() {
   return Math.floor(Math.random() * 2);
 }
 function newgame() {
-  answer;
+  randAnswer = [];
   randNum1 = Math.floor(Math.random() * 100) + 1;
   randNum2 = Math.floor(Math.random() * 100) + 1;
   randOper = Math.floor(Math.random() * 3);
-  ranDif = Math.floor(Math.random() * 10) - 10;
+  ranDif = Math.floor(Math.random() * 6) - 6;
+  if (randDif == 0) {
+    randDif = 1;
+  }
   rand = randAnsNum();
   operator.innerHTML = op[randOper];
   if (randOper == 0) {
@@ -61,27 +87,13 @@ function newgame() {
   } else if (randOper == 2) {
     answer = randNum1 * randNum2;
   }
-  let randAnswer = [answer - ranDif, answer];
+  randAnswer.push(answer - ranDif);
+  randAnswer.push(answer);
   equal.innerHTML = randAnswer[rand];
   num1.innerHTML = randNum1;
   num2.innerHTML = randNum2;
 }
 
-function checkAnswer(n) {
-  if (rand == n) {
-    result.innerHTML = "Correct, below the new quiz";
-    result.style.color = "#00C851";
-    score++;
-    scoreEl.innerHTML = score;
-    if (score == 20) {
-      endScreen("You Win!", "#00C851");
-    }
-  } else {
-    result.innerHTML = "Wrong, Try again";
-    result.style.color = "#ff4444";
-  }
-  newgame();
-}
 function endScreen(string, color) {
   questionArea.style.display = "none";
   status.style.display = "block";
